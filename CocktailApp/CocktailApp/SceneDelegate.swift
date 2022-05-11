@@ -19,9 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene
         else { return }
         window = UIWindow(windowScene: windowScene)
-        let vc = InitialViewController()
-        window!.rootViewController = vc
-        window?.makeKeyAndVisible()
+//        let vc = InitialViewController()
+//        window!.rootViewController = vc
+//        window?.makeKeyAndVisible()
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.isHidden = true
+
+
+        let router = AppRouter(navigationController: navigationController)
+        router.setStartScreen(in: window)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

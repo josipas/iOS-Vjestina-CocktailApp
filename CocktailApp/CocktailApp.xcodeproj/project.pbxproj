@@ -12,6 +12,12 @@
 		52BCD93D282BF6B0007CE3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD93C282BF6B0007CE3EE /* Assets.xcassets */; };
 		52BCD940282BF6B0007CE3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD93E282BF6B0007CE3EE /* LaunchScreen.storyboard */; };
 		C39976D6282BFBA40057AB6D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D5282BFBA40057AB6D /* InitialViewController.swift */; };
+		C39976D8282C05990057AB6D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D7282C05990057AB6D /* HomeViewController.swift */; };
+		C39976DA282C05B10057AB6D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D9282C05B10057AB6D /* FavoritesViewController.swift */; };
+		C39976DC282C05C30057AB6D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976DB282C05C30057AB6D /* SearchViewController.swift */; };
+		C39976DE282C05E20057AB6D /* CocktailDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */; };
+		C39976E0282C065A0057AB6D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976DF282C065A0057AB6D /* AppRouter.swift */; };
+		C39976E2282C067A0057AB6D /* AppRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		52BCD93F282BF6B0007CE3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52BCD941282BF6B0007CE3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C39976D5282BFBA40057AB6D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		C39976D7282C05990057AB6D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C39976D9282C05B10057AB6D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		C39976DB282C05C30057AB6D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewController.swift; sourceTree = "<group>"; };
+		C39976DF282C065A0057AB6D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,12 @@
 				52BCD93E282BF6B0007CE3EE /* LaunchScreen.storyboard */,
 				52BCD941282BF6B0007CE3EE /* Info.plist */,
 				C39976D5282BFBA40057AB6D /* InitialViewController.swift */,
+				C39976D7282C05990057AB6D /* HomeViewController.swift */,
+				C39976D9282C05B10057AB6D /* FavoritesViewController.swift */,
+				C39976DB282C05C30057AB6D /* SearchViewController.swift */,
+				C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */,
+				C39976DF282C065A0057AB6D /* AppRouter.swift */,
+				C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */,
 			);
 			path = CocktailApp;
 			sourceTree = "<group>";
@@ -134,9 +152,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39976DC282C05C30057AB6D /* SearchViewController.swift in Sources */,
 				C39976D6282BFBA40057AB6D /* InitialViewController.swift in Sources */,
 				52BCD934282BF6AD007CE3EE /* AppDelegate.swift in Sources */,
 				52BCD936282BF6AD007CE3EE /* SceneDelegate.swift in Sources */,
+				C39976E2282C067A0057AB6D /* AppRouterProtocol.swift in Sources */,
+				C39976E0282C065A0057AB6D /* AppRouter.swift in Sources */,
+				C39976DE282C05E20057AB6D /* CocktailDetailsViewController.swift in Sources */,
+				C39976DA282C05B10057AB6D /* FavoritesViewController.swift in Sources */,
+				C39976D8282C05990057AB6D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
