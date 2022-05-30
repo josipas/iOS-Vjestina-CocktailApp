@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RandomColor",
+        "repositoryURL": "https://github.com/onevcat/RandomColorSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "ab01c6eff99f40c5e23ffcb957eb3971f937f106",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit.git",
+        "state": {
+          "branch": null,
+          "revision": "f222cbdf325885926566172f6f5f06af95473158",
+          "version": "5.6.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

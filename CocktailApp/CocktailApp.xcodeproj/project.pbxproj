@@ -18,6 +18,15 @@
 		C39976DE282C05E20057AB6D /* CocktailDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */; };
 		C39976E0282C065A0057AB6D /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976DF282C065A0057AB6D /* AppRouter.swift */; };
 		C39976E2282C067A0057AB6D /* AppRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */; };
+		C3C89F5F2844CF9D00DCFE23 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C3C89F5E2844CF9D00DCFE23 /* SnapKit */; };
+		C3C89F612844CFC900DCFE23 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F602844CFC900DCFE23 /* SearchBarView.swift */; };
+		C3C89F632844D2D600DCFE23 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F622844D2D600DCFE23 /* Drink.swift */; };
+		C3C89F652844D52700DCFE23 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F642844D52700DCFE23 /* Drinks.swift */; };
+		C3C89F672844D58D00DCFE23 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F662844D58D00DCFE23 /* NetworkService.swift */; };
+		C3C89F692844D5A000DCFE23 /* NetworkServiceProtokol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F682844D5A000DCFE23 /* NetworkServiceProtokol.swift */; };
+		C3C89F6B2844DF9E00DCFE23 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F6A2844DF9E00DCFE23 /* SearchCollectionViewCell.swift */; };
+		C3C89F6E2844F5C800DCFE23 /* RandomColor in Frameworks */ = {isa = PBXBuildFile; productRef = C3C89F6D2844F5C800DCFE23 /* RandomColor */; };
+		C3C89F70284525F500DCFE23 /* RandomCocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89F6F284525F500DCFE23 /* RandomCocktailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +43,13 @@
 		C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDetailsViewController.swift; sourceTree = "<group>"; };
 		C39976DF282C065A0057AB6D /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterProtocol.swift; sourceTree = "<group>"; };
+		C3C89F602844CFC900DCFE23 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		C3C89F622844D2D600DCFE23 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		C3C89F642844D52700DCFE23 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
+		C3C89F662844D58D00DCFE23 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C3C89F682844D5A000DCFE23 /* NetworkServiceProtokol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtokol.swift; sourceTree = "<group>"; };
+		C3C89F6A2844DF9E00DCFE23 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		C3C89F6F284525F500DCFE23 /* RandomCocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCocktailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C89F5F2844CF9D00DCFE23 /* SnapKit in Frameworks */,
+				C3C89F6E2844F5C800DCFE23 /* RandomColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +93,16 @@
 				C39976D7282C05990057AB6D /* HomeViewController.swift */,
 				C39976D9282C05B10057AB6D /* FavoritesViewController.swift */,
 				C39976DB282C05C30057AB6D /* SearchViewController.swift */,
+				C3C89F6A2844DF9E00DCFE23 /* SearchCollectionViewCell.swift */,
 				C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */,
 				C39976DF282C065A0057AB6D /* AppRouter.swift */,
 				C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */,
+				C3C89F602844CFC900DCFE23 /* SearchBarView.swift */,
+				C3C89F622844D2D600DCFE23 /* Drink.swift */,
+				C3C89F642844D52700DCFE23 /* Drinks.swift */,
+				C3C89F662844D58D00DCFE23 /* NetworkService.swift */,
+				C3C89F682844D5A000DCFE23 /* NetworkServiceProtokol.swift */,
+				C3C89F6F284525F500DCFE23 /* RandomCocktailViewController.swift */,
 			);
 			path = CocktailApp;
 			sourceTree = "<group>";
@@ -98,6 +123,10 @@
 			dependencies = (
 			);
 			name = CocktailApp;
+			packageProductDependencies = (
+				C3C89F5E2844CF9D00DCFE23 /* SnapKit */,
+				C3C89F6D2844F5C800DCFE23 /* RandomColor */,
+			);
 			productName = CocktailApp;
 			productReference = 52BCD930282BF6AD007CE3EE /* CocktailApp.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +155,10 @@
 				Base,
 			);
 			mainGroup = 52BCD927282BF6AD007CE3EE;
+			packageReferences = (
+				C3C89F5D2844CF9D00DCFE23 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C3C89F6C2844F5C800DCFE23 /* XCRemoteSwiftPackageReference "RandomColorSwift" */,
+			);
 			productRefGroup = 52BCD931282BF6AD007CE3EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -152,15 +185,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C89F612844CFC900DCFE23 /* SearchBarView.swift in Sources */,
 				C39976DC282C05C30057AB6D /* SearchViewController.swift in Sources */,
 				C39976D6282BFBA40057AB6D /* InitialViewController.swift in Sources */,
+				C3C89F70284525F500DCFE23 /* RandomCocktailViewController.swift in Sources */,
 				52BCD934282BF6AD007CE3EE /* AppDelegate.swift in Sources */,
+				C3C89F652844D52700DCFE23 /* Drinks.swift in Sources */,
 				52BCD936282BF6AD007CE3EE /* SceneDelegate.swift in Sources */,
 				C39976E2282C067A0057AB6D /* AppRouterProtocol.swift in Sources */,
+				C3C89F632844D2D600DCFE23 /* Drink.swift in Sources */,
+				C3C89F692844D5A000DCFE23 /* NetworkServiceProtokol.swift in Sources */,
 				C39976E0282C065A0057AB6D /* AppRouter.swift in Sources */,
 				C39976DE282C05E20057AB6D /* CocktailDetailsViewController.swift in Sources */,
 				C39976DA282C05B10057AB6D /* FavoritesViewController.swift in Sources */,
+				C3C89F672844D58D00DCFE23 /* NetworkService.swift in Sources */,
 				C39976D8282C05990057AB6D /* HomeViewController.swift in Sources */,
+				C3C89F6B2844DF9E00DCFE23 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +408,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C3C89F5D2844CF9D00DCFE23 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		C3C89F6C2844F5C800DCFE23 /* XCRemoteSwiftPackageReference "RandomColorSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/RandomColorSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C3C89F5E2844CF9D00DCFE23 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3C89F5D2844CF9D00DCFE23 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C3C89F6D2844F5C800DCFE23 /* RandomColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3C89F6C2844F5C800DCFE23 /* XCRemoteSwiftPackageReference "RandomColorSwift" */;
+			productName = RandomColor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52BCD928282BF6AD007CE3EE /* Project object */;
 }

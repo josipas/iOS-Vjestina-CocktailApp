@@ -3,6 +3,9 @@ import UIKit
 class AppRouter: AppRouterProtocol {
     private let navigationController: UINavigationController!
     private let navBarAppearance: UINavigationBarAppearance!
+    private var randomNC: UINavigationController!
+    private var searchNC: UINavigationController!
+
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -10,10 +13,12 @@ class AppRouter: AppRouterProtocol {
     }
     
     func setStartScreen(in window: UIWindow?) {
-        navBarAppearance.backgroundColor = .cyan
+        navBarAppearance.backgroundColor = .white
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [createHomeViewController(), createSearchViewController(), createDetailsViewController(), createFavoritesViewController()]
+        tabBarController.tabBar.tintColor = .black
+        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.viewControllers = [createHomeViewController(), createSearchViewController(), createRandomCocktilViewController(), createFavoritesViewController()]
 
         navigationController.pushViewController(tabBarController, animated: false)
 
@@ -25,7 +30,7 @@ class AppRouter: AppRouterProtocol {
     private func createHomeViewController() -> UINavigationController {
         let homeVC = HomeViewController(router: self)
         let homeNC = UINavigationController(rootViewController: homeVC)
-        homeNC.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(named: "home"), tag: 0)
+        homeNC.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         homeNC.navigationBar.scrollEdgeAppearance = navBarAppearance
         homeNC.navigationBar.standardAppearance = navBarAppearance
         
@@ -34,31 +39,41 @@ class AppRouter: AppRouterProtocol {
     
     private func createSearchViewController() -> UINavigationController {
         let searchVC = SearchViewController(router: self)
-        let searchNC = UINavigationController(rootViewController: searchVC)
-        searchNC.tabBarItem = UITabBarItem.init(title: "Search", image: UIImage(named: "favorites"), tag: 1)
+        searchNC = UINavigationController(rootViewController: searchVC)
+        searchNC.tabBarItem = UITabBarItem.init(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)
         searchNC.navigationBar.scrollEdgeAppearance = navBarAppearance
         searchNC.navigationBar.standardAppearance = navBarAppearance
         
         return searchNC
     }
     
-    private func createDetailsViewController() -> UINavigationController {
-        let detailsVC = CocktailDetailsViewController(router: self)
-        let detailsNC = UINavigationController(rootViewController: detailsVC)
-        detailsNC.tabBarItem = UITabBarItem.init(title: "Favorites", image: UIImage(named: "favorites"), tag: 2)
-        detailsNC.navigationBar.scrollEdgeAppearance = navBarAppearance
-        detailsNC.navigationBar.standardAppearance = navBarAppearance
+    private func createRandomCocktilViewController() -> UINavigationController {
+        let randomVC = RandomCocktailViewController(router: self)
+        randomNC = UINavigationController(rootViewController: randomVC)
+        randomNC.tabBarItem = UITabBarItem.init(title: "Random", image: UIImage(systemName: "wand.and.stars"), tag: 2)
+        randomNC.navigationBar.scrollEdgeAppearance = navBarAppearance
+        randomNC.navigationBar.standardAppearance = navBarAppearance
         
-        return detailsNC
+        return randomNC
     }
     
     private func createFavoritesViewController() -> UINavigationController {
         let favoritesVC = FavoritesViewController(router: self)
         let favoritesNC = UINavigationController(rootViewController: favoritesVC)
-        favoritesNC.tabBarItem = UITabBarItem.init(title: "Favorites", image: UIImage(named: "favorites"), tag: 3)
+        favoritesNC.tabBarItem = UITabBarItem.init(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 3)
         favoritesNC.navigationBar.scrollEdgeAppearance = navBarAppearance
         favoritesNC.navigationBar.standardAppearance = navBarAppearance
         
         return favoritesNC
+    }
+    
+    func showRandomDetailsViewController(idDrink: String) {
+        let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
+        randomNC.pushViewController(vc, animated: true)
+    }
+    
+    func showDetailsViewController(idDrink: String) {
+        let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
+        searchNC.pushViewController(vc, animated: true)
     }
 }
