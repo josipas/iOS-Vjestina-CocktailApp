@@ -10,7 +10,7 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
     }
 }
 

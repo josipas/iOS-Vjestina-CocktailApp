@@ -11,6 +11,8 @@
 		52BCD936282BF6AD007CE3EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCD935282BF6AD007CE3EE /* SceneDelegate.swift */; };
 		52BCD93D282BF6B0007CE3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD93C282BF6B0007CE3EE /* Assets.xcassets */; };
 		52BCD940282BF6B0007CE3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BCD93E282BF6B0007CE3EE /* LaunchScreen.storyboard */; };
+		52EC5E11284696FC0001D1D8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC5E10284696FC0001D1D8 /* UIColor+Extensions.swift */; };
+		52EC5E132846A0FB0001D1D8 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC5E122846A0FB0001D1D8 /* UIFont+Extensions.swift */; };
 		C39976D6282BFBA40057AB6D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D5282BFBA40057AB6D /* InitialViewController.swift */; };
 		C39976D8282C05990057AB6D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D7282C05990057AB6D /* HomeViewController.swift */; };
 		C39976DA282C05B10057AB6D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39976D9282C05B10057AB6D /* FavoritesViewController.swift */; };
@@ -36,6 +38,8 @@
 		52BCD93C282BF6B0007CE3EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52BCD93F282BF6B0007CE3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52BCD941282BF6B0007CE3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52EC5E10284696FC0001D1D8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		52EC5E122846A0FB0001D1D8 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		C39976D5282BFBA40057AB6D /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		C39976D7282C05990057AB6D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C39976D9282C05B10057AB6D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -89,22 +93,64 @@
 				52BCD93C282BF6B0007CE3EE /* Assets.xcassets */,
 				52BCD93E282BF6B0007CE3EE /* LaunchScreen.storyboard */,
 				52BCD941282BF6B0007CE3EE /* Info.plist */,
+				52EC5E192846A8720001D1D8 /* Navigation */,
+				52EC5E182846A85B0001D1D8 /* Models */,
+				52EC5E162846A80D0001D1D8 /* Views */,
+				52EC5E152846A7D80001D1D8 /* ViewControllers */,
+				52EC5E142846A1110001D1D8 /* Extensions */,
+			);
+			path = CocktailApp;
+			sourceTree = "<group>";
+		};
+		52EC5E142846A1110001D1D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52EC5E10284696FC0001D1D8 /* UIColor+Extensions.swift */,
+				52EC5E122846A0FB0001D1D8 /* UIFont+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52EC5E152846A7D80001D1D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3C89F6F284525F500DCFE23 /* RandomCocktailViewController.swift */,
 				C39976D5282BFBA40057AB6D /* InitialViewController.swift */,
 				C39976D7282C05990057AB6D /* HomeViewController.swift */,
 				C39976D9282C05B10057AB6D /* FavoritesViewController.swift */,
 				C39976DB282C05C30057AB6D /* SearchViewController.swift */,
-				C3C89F6A2844DF9E00DCFE23 /* SearchCollectionViewCell.swift */,
 				C39976DD282C05E20057AB6D /* CocktailDetailsViewController.swift */,
-				C39976DF282C065A0057AB6D /* AppRouter.swift */,
-				C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52EC5E162846A80D0001D1D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3C89F6A2844DF9E00DCFE23 /* SearchCollectionViewCell.swift */,
 				C3C89F602844CFC900DCFE23 /* SearchBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		52EC5E182846A85B0001D1D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				C3C89F622844D2D600DCFE23 /* Drink.swift */,
 				C3C89F642844D52700DCFE23 /* Drinks.swift */,
 				C3C89F662844D58D00DCFE23 /* NetworkService.swift */,
 				C3C89F682844D5A000DCFE23 /* NetworkServiceProtokol.swift */,
-				C3C89F6F284525F500DCFE23 /* RandomCocktailViewController.swift */,
 			);
-			path = CocktailApp;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52EC5E192846A8720001D1D8 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C39976DF282C065A0057AB6D /* AppRouter.swift */,
+				C39976E1282C067A0057AB6D /* AppRouterProtocol.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +246,8 @@
 				C39976DA282C05B10057AB6D /* FavoritesViewController.swift in Sources */,
 				C3C89F672844D58D00DCFE23 /* NetworkService.swift in Sources */,
 				C39976D8282C05990057AB6D /* HomeViewController.swift in Sources */,
+				52EC5E11284696FC0001D1D8 /* UIColor+Extensions.swift in Sources */,
+				52EC5E132846A0FB0001D1D8 /* UIFont+Extensions.swift in Sources */,
 				C3C89F6B2844DF9E00DCFE23 /* SearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

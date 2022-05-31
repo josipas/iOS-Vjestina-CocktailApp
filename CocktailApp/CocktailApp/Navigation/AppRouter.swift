@@ -13,18 +13,28 @@ class AppRouter: AppRouterProtocol {
     }
     
     func setStartScreen(in window: UIWindow?) {
-        navBarAppearance.backgroundColor = .white
-        
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .black
-        tabBarController.tabBar.backgroundColor = .white
-        tabBarController.viewControllers = [createHomeViewController(), createSearchViewController(), createRandomCocktilViewController(), createFavoritesViewController()]
+        navBarAppearance.backgroundColor = UIColor(hex: "#f54242")
+
+        let tabBarController = setUpTabBar()
 
         navigationController.pushViewController(tabBarController, animated: false)
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+    }
+
+    private func setUpTabBar() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = UIColor(hex: "#f54242")
+        tabBarController.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+        tabBarController.tabBar.layer.shadowRadius = 4.0
+        tabBarController.tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+        tabBarController.tabBar.layer.shadowOpacity = 0.3
+        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.viewControllers = [createHomeViewController(), createSearchViewController(), createRandomCocktilViewController(), createFavoritesViewController()]
+
+        return tabBarController
     }
     
     private func createHomeViewController() -> UINavigationController {
