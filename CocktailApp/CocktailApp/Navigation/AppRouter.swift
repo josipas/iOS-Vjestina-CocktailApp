@@ -5,7 +5,7 @@ class AppRouter: AppRouterProtocol {
     private let navBarAppearance: UINavigationBarAppearance!
     private var randomNC: UINavigationController!
     private var searchNC: UINavigationController!
-
+    private var homeNC: UINavigationController!
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -39,7 +39,7 @@ class AppRouter: AppRouterProtocol {
     
     private func createHomeViewController() -> UINavigationController {
         let homeVC = HomeViewController(router: self)
-        let homeNC = UINavigationController(rootViewController: homeVC)
+        homeNC = UINavigationController(rootViewController: homeVC)
         homeNC.tabBarItem = UITabBarItem.init(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         homeNC.navigationBar.scrollEdgeAppearance = navBarAppearance
         homeNC.navigationBar.standardAppearance = navBarAppearance
@@ -85,5 +85,10 @@ class AppRouter: AppRouterProtocol {
     func showDetailsViewController(idDrink: String) {
         let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
         searchNC.pushViewController(vc, animated: true)
+    }
+
+    func showDrinksByFilterViewController(for filter: Filters, name: String) {
+        let vc = CocktailsByFilterViewController(router: self, string: name, filter: filter)
+        homeNC.pushViewController(vc, animated: true)
     }
 }

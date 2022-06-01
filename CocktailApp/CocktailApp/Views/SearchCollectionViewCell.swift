@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 import RandomColor
 
-class  SearchCollectionViewCell: UICollectionViewCell {
+class SearchCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: SearchCollectionViewCell.self)
 
     private var drinkName: UILabel!

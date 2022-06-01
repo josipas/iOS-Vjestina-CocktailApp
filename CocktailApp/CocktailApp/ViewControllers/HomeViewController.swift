@@ -1,16 +1,18 @@
-
 import UIKit
-
 
 class HomeViewController: UIViewController {
     private var router: AppRouterProtocol!
-    private var firstLabel: UILabel!
-    private var secondLabel: UILabel!
-    private var collectionView: UICollectionView!
+    private var tableView: UITableView!
+
+    private var filters: [Filters] = Filters.allCases
+    private var ingredients: [Ingredient] = []
+    private var categories: [Category] = []
+
+    private let networkService: NetworkServiceProtocol = NetworkService()
 
     convenience init(router: AppRouterProtocol) {
-            self.init()
-            self.router = router
+        self.init()
+        self.router = router
     }
     
     override func viewDidLoad() {
@@ -18,6 +20,38 @@ class HomeViewController: UIViewController {
 
         buildViews()
         setUpNavBar()
+        getData()
+    }
+
+    private func getData() {
+        networkService.getListOfAllIngredients { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let ingredients):
+                self.ingredients = ingredients
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+
+        networkService.getListOfAllCategories { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let categories):
+                self.categories = categories
+                print(categories)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     private func buildViews() {
@@ -28,55 +62,25 @@ class HomeViewController: UIViewController {
     }
 
     private func createViews() {
-        firstLabel = UILabel()
-        secondLabel = UILabel()
+        tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
 
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 8
-        layout.scrollDirection = .vertical
-
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //collectionView.delegate = self
-        //collectionView.dataSource = self
-        //collectionView.register(MoviePictureCollectionViewCell.self, forCellWithReuseIdentifier: MoviePictureCollectionViewCell.reuseIdentifier)
+        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
+        tableView.separatorStyle = .none
     }
 
     private func addSubviews() {
-        view.addSubview(firstLabel)
-        view.addSubview(secondLabel)
-        view.addSubview(collectionView)
+        view.addSubview(tableView)
     }
 
     private func styleViews() {
         view.backgroundColor = .white
-
-        firstLabel.text = "Pick your drink!"
-        firstLabel.textColor = UIColor(hex: "#f54242")
-        firstLabel.font = UIFont.italicSystemFont(ofSize: 20, weight: .light)
-
-        secondLabel.text = "It's cocktail o'clock!"
-        secondLabel.textColor = UIColor(hex: "#f54242")
-        secondLabel.font = UIFont.italicSystemFont(ofSize: 20, weight: .light)
-
-        collectionView.backgroundColor = UIColor(hex: "#f54242")
     }
 
     private func addConstraints() {
-        firstLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(16)
-        }
-
-        secondLabel.snp.makeConstraints {
-            $0.leading.equalTo(firstLabel.snp.leading).offset(30)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.top.equalTo(firstLabel.snp.bottom).offset(5)
-        }
-
-        collectionView.snp.makeConstraints {
-            $0.top.equalTo(secondLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 
@@ -84,38 +88,85 @@ class HomeViewController: UIViewController {
         let navigationBarImageView = UILabel()
         navigationBarImageView.textColor = .white
         navigationBarImageView.text = "Cocktail App"
-        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 28, weight: .ultraLight)
-
-        navigationBarImageView.frame = CGRect(x: 0, y: 0, width: 145, height: 35)
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
 
         self.navigationItem.titleView = navigationBarImageView
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
+extension HomeViewController: UITableViewDelegate {
 
 }
 
-extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension HomeViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        filters.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(
+                        withIdentifier: HomeTableViewCell.reuseIdentifier,
+                        for: indexPath) as? HomeTableViewCell
+            else {
+                fatalError()
+            }
+
+            cell.selectionStyle = .none
+            cell.delegate = self
+            cell.set(firstText: "Pick your base!", secondText: "Start cocktail adventure! 🥂", filter: .ingredient)
+
+            return cell
+        } else {
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(
+                        withIdentifier: HomeTableViewCell.reuseIdentifier,
+                        for: indexPath) as? HomeTableViewCell
+            else {
+                fatalError()
+            }
+
+            cell.selectionStyle = .none
+            cell.delegate = self
+            cell.set(firstText: "Pick drink for yourself", secondText: "by group", filter: .category)
+
+            return cell
+        }
     }
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let collectionWidth = collectionView.frame.width
-        let itemDimension = (collectionWidth - 2*18) / 3
+extension HomeViewController: HomeTableViewCellDelegate {
+    func didSelectItem(for filter: Filters, at indexPath: IndexPath) {
+        switch filter {
+        case .ingredient:
+            router.showDrinksByFilterViewController(for: filter, name: ingredients[indexPath.row].strIngredient1)
+        case .category:
+            router.showDrinksByFilterViewController(for: filter, name: categories[indexPath.row].strCategory)
+        }
+    }
 
-        return CGSize(width: itemDimension, height: itemDimension)
+    func getItemCount(for filter: Filters) -> Int {
+        switch filter {
+        case .ingredient:
+            return ingredients.count
+        case .category:
+            return categories.count
+        }
+    }
+
+    func getItemTitle(for filter: Filters, at indexPath: IndexPath) -> String {
+        switch filter {
+        case .ingredient:
+            return ingredients[indexPath.row].strIngredient1
+        case .category:
+            return categories[indexPath.row].strCategory
+        }
     }
 }
 
