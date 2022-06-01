@@ -107,7 +107,7 @@ extension SearchViewController: UICollectionViewDataSource {
             fatalError()
         }
         let searchData = drinks[indexPath.row]
-        cell.set(searchData: searchData)
+        cell.set(strDrink: searchData.strDrink, strCategory: searchData.strCategory, strAlcoholic: searchData.strAlcoholic, strDrinkThumb: searchData.strDrinkThumb)
         
         return cell
     }

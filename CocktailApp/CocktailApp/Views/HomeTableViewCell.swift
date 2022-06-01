@@ -62,8 +62,6 @@ class HomeTableViewCell: UITableViewCell {
     }
 
     private func styleViews() {
-        backgroundColor = .white
-
         firstLabel.textColor = UIColor(hex: "#f54242")
         firstLabel.font = UIFont.italicSystemFont(ofSize: 20)
 

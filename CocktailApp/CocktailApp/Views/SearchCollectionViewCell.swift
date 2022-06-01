@@ -24,6 +24,12 @@ class SearchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        drinkImage.image = nil
+    }
+
     func buildViews() {
         drinkImage = UIImageView()
         contentView.addSubview(drinkImage)
@@ -86,17 +92,26 @@ class SearchCollectionViewCell: UICollectionViewCell {
         }
     }
         
-    func set(searchData: Drink) {
-        drink = searchData
-        print("\(searchData.strDrink)")
-        drinkName.text = "\(searchData.strDrink)"
-        drinkCategory.text = "Category: \(searchData.strCategory)"
-        if searchData.strAlcoholic == "Alcoholic" {
-            alcoholic.text = "Alcoholic: Yes"
+    func set(strDrink: String, strCategory: String?, strAlcoholic: String?, strDrinkThumb: String) {
+        print("\(strDrink)")
+        self.drinkName.text = "\(strDrink)"
+        if let strCategory = strCategory {
+            drinkCategory.text = "Category: \(strCategory)"
         } else {
-            alcoholic.text = "Alcoholic: No"
+            drinkCategory.isHidden = true
         }
-        drinkImage.load(urlString: searchData.strDrinkThumb)
+
+        if let strAlcoholic = strAlcoholic {
+            if strAlcoholic == "Alcoholic" {
+                alcoholic.text = "Alcoholic: Yes"
+            } else {
+                alcoholic.text = "Alcoholic: No"
+            }
+        } else {
+            alcoholic.isHidden = true
+        }
+
+        drinkImage.load(urlString: strDrinkThumb)
     }
 }
 

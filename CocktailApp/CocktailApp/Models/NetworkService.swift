@@ -55,8 +55,10 @@ class NetworkService: NetworkServiceProtocol {
             completionHandler(.failure(RequestError.clientError))
             return
         }
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+
         executeUrlRequest(request) { (result: Result<DrinkFilters, RequestError>) in
             switch result {
             case .failure:
@@ -69,15 +71,17 @@ class NetworkService: NetworkServiceProtocol {
 
     func getListOfAllCategories(completionHandler: @escaping (Result<[Category], Error>) -> Void) {
         let urlString = "\(Constants.apiUrl)/list.php?c=list"
-        print(urlString)
+
         guard
             let url = URL(string: urlString)
         else {
             completionHandler(.failure(RequestError.clientError))
             return
         }
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+
         executeUrlRequest(request) { (result: Result<Categories, RequestError>) in
             switch result {
             case .failure:
@@ -90,15 +94,17 @@ class NetworkService: NetworkServiceProtocol {
 
     func getListOfAllIngredients(completionHandler: @escaping (Result<[Ingredient], Error>) -> Void) {
         let urlString = "\(Constants.apiUrl)/list.php?i=list"
-        print(urlString)
+
         guard
             let url = URL(string: urlString)
         else {
             completionHandler(.failure(RequestError.clientError))
             return
         }
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        
         executeUrlRequest(request) { (result: Result<Ingredients, RequestError>) in
             switch result {
             case .failure:
