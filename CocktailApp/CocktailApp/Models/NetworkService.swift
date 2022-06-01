@@ -1,12 +1,5 @@
 import Foundation
 
-enum RequestError: Error {
-    case clientError
-    case serverError
-    case noDataError
-    case dataDecodingError
-}
-
 enum Result<Success, Failure> where Failure : Error {
     /// A success, storing a `Success` value.
     case success(Success)
@@ -16,7 +9,7 @@ enum Result<Success, Failure> where Failure : Error {
 
 class NetworkService: NetworkServiceProtocol {
     private func executeUrlRequest<T: Decodable>(_ request: URLRequest, completionHandler:
-                                                 @escaping (Result<T, RequestError>) -> Void) {
+                                                 @escaping (Result<T, CustomError>) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, err in
             guard err == nil else {
                 completionHandler(.failure(.clientError))
@@ -52,17 +45,17 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 
-        executeUrlRequest(request) { (result: Result<DrinkFilters, RequestError>) in
+        executeUrlRequest(request) { (result: Result<DrinkFilters, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks))
             }
@@ -75,17 +68,17 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 
-        executeUrlRequest(request) { (result: Result<Categories, RequestError>) in
+        executeUrlRequest(request) { (result: Result<Categories, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks))
             }
@@ -98,17 +91,17 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        executeUrlRequest(request) { (result: Result<Ingredients, RequestError>) in
+        executeUrlRequest(request) { (result: Result<Ingredients, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks))
             }
@@ -121,15 +114,15 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        executeUrlRequest(request) { (result: Result<Drinks, RequestError>) in
+        executeUrlRequest(request) { (result: Result<Drinks, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks))
             }
@@ -142,15 +135,15 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        executeUrlRequest(request) { (result: Result<Drinks, RequestError>) in
+        executeUrlRequest(request) { (result: Result<Drinks, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks.first!))
             }
@@ -163,15 +156,15 @@ class NetworkService: NetworkServiceProtocol {
         guard
             let url = URL(string: urlString)
         else {
-            completionHandler(.failure(RequestError.clientError))
+            completionHandler(.failure(CustomError.clientError))
             return
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        executeUrlRequest(request) { (result: Result<Drinks, RequestError>) in
+        executeUrlRequest(request) { (result: Result<Drinks, CustomError>) in
             switch result {
             case .failure:
-                completionHandler(.failure(RequestError.serverError))
+                completionHandler(.failure(CustomError.serverError))
             case .success(let value):
                 completionHandler(.success(value.drinks.first!))
             }

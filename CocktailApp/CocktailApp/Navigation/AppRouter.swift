@@ -91,4 +91,9 @@ class AppRouter: AppRouterProtocol {
         let vc = CocktailsByFilterViewController(router: self, string: name, filter: filter)
         homeNC.pushViewController(vc, animated: true)
     }
+
+    func showDetailsViewControllerFromHome(idDrink: String) {
+        let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
+        homeNC.pushViewController(vc, animated: true)
+    }
 }

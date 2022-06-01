@@ -18,6 +18,8 @@ class CocktailDetailsViewController: UIViewController {
     private var heartFill: UIImage!
     private var favorites: UIImageView!
     private var idDrink: String!
+
+    private var allFavorites: [DrinkFilter] = []
     
     private var router: AppRouterProtocol!
 
@@ -36,12 +38,34 @@ class CocktailDetailsViewController: UIViewController {
                 self.drink = value
                 DispatchQueue.main.async {
                     self.reloadData()
+                    self.getFavorites()
                 }
             case .failure(let error):
                 print(error)
             }
         }
         buildViews()
+    }
+
+    private func getFavorites() {
+        PersistenceManager.retrieveFavorites { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let favorites):
+                self.allFavorites = favorites
+                let drinkFilter = DrinkFilter(strDrink: self.drink.strDrink, strDrinkThumb: self.drink.strDrinkThumb, idDrink: self.drink.idDrink)
+                if self.allFavorites.contains(where: {
+                    $0.idDrink == drinkFilter.idDrink
+                }) {
+                    DispatchQueue.main.async {
+                        self.favorites.image = self.heartFill
+                    }
+                }
+                print(favorites)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func buildViews() {
@@ -84,7 +108,7 @@ class CocktailDetailsViewController: UIViewController {
         
         favorites = UIImageView()
         favorites.image = heart
-        favorites.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.addToFavorites)))
+        favorites.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.updateFavorites)))
         favorites.isUserInteractionEnabled = true
         view.addSubview(favorites)
 
@@ -208,7 +232,32 @@ class CocktailDetailsViewController: UIViewController {
         alcoholic.text = drink.strAlcoholic
     }
     
-    @objc func addToFavorites() {
-        favorites.image = heartFill
+    @objc func updateFavorites() {
+        let drinkFilter = DrinkFilter(strDrink: drink.strDrink, strDrinkThumb: drink.strDrinkThumb, idDrink: drink.idDrink)
+        if favorites.image == heart {
+            PersistenceManager.updateWith(favorite: drinkFilter, actionType: .add) { [weak self] error in
+                guard let self = self else { return }
+
+                guard error != nil else {
+                    DispatchQueue.main.async {
+                        self.favorites.image = self.heartFill
+                    }
+                    return
+                }
+                return
+            }
+        } else {
+            PersistenceManager.updateWith(favorite: drinkFilter, actionType: .remove) { [weak self] error in
+                guard let self = self else { return }
+
+                guard error != nil else {
+                    DispatchQueue.main.async {
+                        self.favorites.image = self.heart
+                    }
+                    return
+                }
+                return
+            }
+        }
     }
 }
