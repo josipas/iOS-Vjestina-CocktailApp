@@ -22,7 +22,6 @@ class AppRouter: AppRouterProtocol {
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
     }
 
     private func setUpTabBar() -> UITabBarController {

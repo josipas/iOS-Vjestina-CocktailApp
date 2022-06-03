@@ -10,7 +10,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
-        colors = randomColors(count: 10, hue: .purple, luminosity: .bright)
+        colors = randomColors(count: 1, hue: .purple, luminosity: .bright)
 
         buildViews()
     }

@@ -3,7 +3,6 @@ import SnapKit
 import RandomColor
 
 class CocktailDetailsViewController: UIViewController {
-    
     private var name: UILabel!
     private var instructionsTitle: UILabel!
     private var instructions: UILabel!
@@ -26,6 +25,8 @@ class CocktailDetailsViewController: UIViewController {
     
     private var router: AppRouterProtocol!
 
+    private let networkService: NetworkServiceProtocol = NetworkService()
+
     convenience init(router: AppRouterProtocol, idDrink: String) {
         self.init()
         self.router = router
@@ -34,7 +35,11 @@ class CocktailDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         view.backgroundColor = .white
-        let networkService = NetworkService()
+        buildViews()
+        getData()
+    }
+
+    private func getData() {
         networkService.getDrinkDetails(string: idDrink) { result in
             switch result {
             case .success(let value):
@@ -47,7 +52,6 @@ class CocktailDetailsViewController: UIViewController {
                 print(error)
             }
         }
-        buildViews()
     }
 
     private func getFavorites() {
@@ -64,7 +68,6 @@ class CocktailDetailsViewController: UIViewController {
                         self.favorites.image = self.heartFill
                     }
                 }
-                print(favorites)
             case .failure(let error):
                 print(error)
             }
@@ -289,7 +292,6 @@ class CocktailDetailsViewController: UIViewController {
     
     @objc func updateFavorites() {
         let drinkFilter = DrinkFilter(strDrink: drink.strDrink, strDrinkThumb: drink.strDrinkThumb, idDrink: drink.idDrink)
-        print("TU SMO")
         if favorites.image == heart {
             PersistenceManager.updateWith(favorite: drinkFilter, actionType: .add) { [weak self] error in
                 guard let self = self else { return }

@@ -17,7 +17,6 @@ class SearchBarView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
         buildViews()
     }
 
@@ -27,33 +26,39 @@ class SearchBarView: UIView {
     
     private func buildViews() {
         createViews()
+        addSubviews()
         styleViews()
         defineLayoutForViews()
     }
     
-    func createViews(){
+    func createViews() {
         grayLayout = UIView()
-        addSubview(grayLayout)
-        
+
         grayLayout2 = UIView()
-        addSubview(grayLayout2)
-        
+
         searchImage = UIImageView()
-        addSubview(searchImage)
-        
+
         textInput = UITextField()
-        addSubview(textInput)
-        
+
         xButton = UIButton()
-        addSubview(xButton)
         xButton.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         
         cancelButton = UIButton()
-        addSubview(cancelButton)
         cancelButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
-        
     }
-    func styleViews(){
+
+    private func addSubviews() {
+        addSubview(grayLayout)
+        addSubview(grayLayout2)
+        addSubview(searchImage)
+        addSubview(textInput)
+        addSubview(xButton)
+        addSubview(cancelButton)
+    }
+
+    private func styleViews() {
+        self.backgroundColor = .white
+
         grayLayout.layer.backgroundColor = UIColor(red: 0.917, green: 0.917, blue: 0.921, alpha: 1).cgColor
         grayLayout.layer.cornerRadius = 10
         
@@ -76,9 +81,9 @@ class SearchBarView: UIView {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(.black.withAlphaComponent(0.8), for: .normal)
         cancelButton.isHidden = true
-        
     }
-    func defineLayoutForViews(){
+
+    func defineLayoutForViews() {
         grayLayout.snp.makeConstraints{
             $0.leading.top.trailing.bottom.equalToSuperview().inset(0)
         }
@@ -143,7 +148,6 @@ extension SearchBarView: UITextFieldDelegate {
             xButton.isHidden = true
         }
         delegateFilter?.filter(text: textInput.text!)
-        print(textInput.text)
     }
 }
 

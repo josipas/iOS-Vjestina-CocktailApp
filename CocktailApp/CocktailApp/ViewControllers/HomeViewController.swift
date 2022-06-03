@@ -45,7 +45,6 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let categories):
                 self.categories = categories
-                print(categories)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -82,12 +81,11 @@ class HomeViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         view.backgroundColor = .white
         
-        let cheers = UIImage(named: "dance.jpeg")
+        let danceImage = UIImage(named: "dance.jpeg")
 
         image.contentMode = .scaleAspectFit
-        image.layer.cornerRadius = 20
         image.clipsToBounds = true
-        image.image = cheers
+        image.image = danceImage
     }
 
     private func addConstraints() {

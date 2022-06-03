@@ -1,10 +1,6 @@
 import Foundation
 
-enum PersistenceActionType {
-    case add, remove
-}
-
-enum PersistenceManager {
+class PersistenceManager {
     static private let defaults = UserDefaults.standard
 
     enum Keys {

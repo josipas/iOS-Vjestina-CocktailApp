@@ -3,8 +3,6 @@ import SnapKit
 import RandomColor
 
 class RandomCocktailViewController: UIViewController {
-    
-    
     private var name: UILabel!
     private var image: UIImageView!
     private var drink: Drink!
@@ -14,15 +12,20 @@ class RandomCocktailViewController: UIViewController {
     private var detailsLabel: UILabel!
     
     private var router: AppRouterProtocol!
+    private let networkService: NetworkServiceProtocol = NetworkService()
 
     convenience init(router: AppRouterProtocol) {
-            self.init()
-            self.router = router
+        self.init()
+        self.router = router
     }
     
     override func viewDidLoad() {
         view.backgroundColor = .white
-        let networkService = NetworkService()
+        buildViews()
+        getData()
+    }
+
+    private func getData() {
         networkService.getRandomDrink() { result in
             switch result {
             case .success(let value):
@@ -34,7 +37,6 @@ class RandomCocktailViewController: UIViewController {
                 print(error)
             }
         }
-        buildViews()
     }
     
     private func buildViews() {
@@ -47,7 +49,6 @@ class RandomCocktailViewController: UIViewController {
     private func createViews() {
         name = UILabel()
         view.addSubview(name)
-        
         
         image = UIImageView()
         view.addSubview(image)
@@ -65,7 +66,6 @@ class RandomCocktailViewController: UIViewController {
         
         detailsLabel = UILabel()
         view.addSubview(detailsLabel)
-
     }
     
     @objc func tryAgain(sender: UIButton!){
@@ -111,7 +111,6 @@ class RandomCocktailViewController: UIViewController {
         detailButton.tintColor = UIColor(hex: "#b88dbe")
         
         detailsLabel.text = "Show details"
-                
     }
     
     private func defineLayoutForViews() {
@@ -132,7 +131,6 @@ class RandomCocktailViewController: UIViewController {
             $0.leading.equalToSuperview().inset(90)
             $0.height.equalTo(60)
             $0.width.equalTo(60)
-
         }
         
         tryAgainLabel.snp.makeConstraints {
@@ -145,15 +143,14 @@ class RandomCocktailViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(90)
             $0.height.equalTo(60)
             $0.width.equalTo(60)
-
         }
         
         detailsLabel.snp.makeConstraints {
             $0.top.equalTo(detailButton.snp.bottom).offset(0)
             $0.trailing.equalToSuperview().inset(70)
         }
-        
     }
+
     private func setUpNavBar() {
         let navigationBarImageView = UILabel()
         navigationBarImageView.textColor = .white

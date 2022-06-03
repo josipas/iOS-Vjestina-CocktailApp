@@ -1,19 +1,9 @@
 struct Drink: Codable {
     let idDrink: String
     let strDrink: String
-//    let strDrinkAlternate: String
-//    let strTags: String
-//    let strVideo: String
     let strCategory: String
-//    let strIBA: String
     let strAlcoholic: String
-//    let strGlass: String
     let strInstructions: String
-//    let strInstructionsES: String
-//    let strInstructionsDE: String
-//    let strInstructionsFR: String
-//    let strInstructionsIT: String
-//
     let strDrinkThumb: String
     let strIngredient1: String?
     let strIngredient2: String?
@@ -45,10 +35,4 @@ struct Drink: Codable {
     let strMeasure13: String?
     let strMeasure14: String?
     let strMeasure15: String?
-//    let strImageSource: String
-//    let strImageAttribution: String
-//    let strCreativeCommonsConfirmed: String
-//    let dateModified: String
-
-
 }

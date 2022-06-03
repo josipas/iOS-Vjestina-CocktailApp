@@ -12,7 +12,6 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
         buildViews()
         setUpNavBar()
     }
@@ -29,7 +28,6 @@ class FavoritesViewController: UIViewController {
             switch result {
             case .success(let favorites):
                 self.favorites = favorites
-                print(favorites)
 
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -41,6 +39,12 @@ class FavoritesViewController: UIViewController {
     }
 
     private func buildViews() {
+        createViews()
+        styleViews()
+        addConstraints()
+    }
+
+    private func createViews() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
@@ -50,16 +54,21 @@ class FavoritesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.reuseIdentifier)
 
-        overrideUserInterfaceStyle = .light
-
         view.addSubview(collectionView)
+    }
 
+    private func styleViews() {
+        overrideUserInterfaceStyle = .light
+        view.backgroundColor = .white
+    }
+
+    private func addConstraints() {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             $0.leading.trailing.bottom.equalToSuperview().inset(16)
         }
     }
-    
+
     private func setUpNavBar() {
         let navigationBarImageView = UILabel()
         navigationBarImageView.textColor = .white

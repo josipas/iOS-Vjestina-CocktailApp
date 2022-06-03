@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		526C2B0328476EF1007636E1 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B0228476EF1007636E1 /* PersistanceService.swift */; };
+		526C2B0328476EF1007636E1 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B0228476EF1007636E1 /* PersistenceService.swift */; };
 		526C2B0528476F1C007636E1 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B0428476F1C007636E1 /* CustomError.swift */; };
 		526C2B09284776D1007636E1 /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B08284776D1007636E1 /* FavoritesCollectionViewCell.swift */; };
 		526C2B0B2847776E007636E1 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B0A2847776E007636E1 /* UIImageView+Extensions.swift */; };
+		526C2B0D284A3452007636E1 /* PersistenceActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C2B0C284A3452007636E1 /* PersistenceActionType.swift */; };
 		528A8E8E2846CBEB006A13A5 /* CocktailsByFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A8E8D2846CBEB006A13A5 /* CocktailsByFilterViewController.swift */; };
 		528A8E902846CF60006A13A5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A8E8F2846CF60006A13A5 /* HomeTableViewCell.swift */; };
 		528A8E922846DA5D006A13A5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A8E912846DA5D006A13A5 /* Category.swift */; };
@@ -45,10 +46,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		526C2B0228476EF1007636E1 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		526C2B0228476EF1007636E1 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		526C2B0428476F1C007636E1 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		526C2B08284776D1007636E1 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		526C2B0A2847776E007636E1 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		526C2B0C284A3452007636E1 /* PersistenceActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceActionType.swift; sourceTree = "<group>"; };
 		528A8E8D2846CBEB006A13A5 /* CocktailsByFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsByFilterViewController.swift; sourceTree = "<group>"; };
 		528A8E8F2846CF60006A13A5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		528A8E912846DA5D006A13A5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -177,8 +179,9 @@
 				528A8E932846DA7E006A13A5 /* Categories.swift */,
 				528A8E972846DFF3006A13A5 /* DrinkFilter.swift */,
 				528A8E992846E05C006A13A5 /* DrinkFilters.swift */,
-				526C2B0228476EF1007636E1 /* PersistanceService.swift */,
+				526C2B0228476EF1007636E1 /* PersistenceService.swift */,
 				526C2B0428476F1C007636E1 /* CustomError.swift */,
+				526C2B0C284A3452007636E1 /* PersistenceActionType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			files = (
 				C3C89F612844CFC900DCFE23 /* SearchBarView.swift in Sources */,
 				528A8E9A2846E05C006A13A5 /* DrinkFilters.swift in Sources */,
+				526C2B0D284A3452007636E1 /* PersistenceActionType.swift in Sources */,
 				52EC5E212846B48B0001D1D8 /* Constants.swift in Sources */,
 				C39976DC282C05C30057AB6D /* SearchViewController.swift in Sources */,
 				528A8E902846CF60006A13A5 /* HomeTableViewCell.swift in Sources */,
@@ -280,7 +284,7 @@
 				52EC5E1B2846AB860001D1D8 /* HomeCollectionViewCell.swift in Sources */,
 				C3C89F70284525F500DCFE23 /* RandomCocktailViewController.swift in Sources */,
 				52BCD934282BF6AD007CE3EE /* AppDelegate.swift in Sources */,
-				526C2B0328476EF1007636E1 /* PersistanceService.swift in Sources */,
+				526C2B0328476EF1007636E1 /* PersistenceService.swift in Sources */,
 				C3C89F652844D52700DCFE23 /* Drinks.swift in Sources */,
 				52EC5E1F2846B3D70001D1D8 /* Ingredients.swift in Sources */,
 				52BCD936282BF6AD007CE3EE /* SceneDelegate.swift in Sources */,

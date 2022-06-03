@@ -9,6 +9,7 @@ class SearchViewController: UIViewController {
     private var layout: UICollectionViewFlowLayout!
     
     private var router: AppRouterProtocol!
+    private let networkService: NetworkServiceProtocol = NetworkService()
 
     convenience init(router: AppRouterProtocol) {
             self.init()
@@ -16,14 +17,16 @@ class SearchViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-
         view.backgroundColor = .white
-        let networkService = NetworkService()
+        buildViews()
+        getData()
+    }
+
+    private func getData() {
         networkService.getDrinksByName(string: "t") { result in
             switch result {
             case .success(let value):
                 self.drinks = value
-                print(value.count)
                 DispatchQueue.main.async {
                     self.collectionList.reloadData()
                 }
@@ -31,10 +34,9 @@ class SearchViewController: UIViewController {
                 print(error)
             }
         }
-        buildViews()
     }
     
-    private func buildViews(){
+    private func buildViews() {
         createViews()
         styleViews()
         defineLayoutForViews()
@@ -43,7 +45,6 @@ class SearchViewController: UIViewController {
     }
     
     private func createViews(){
-        
         searchBar = SearchBarView()
         searchBar.delegateFilter = self
         view.addSubview(searchBar)
@@ -130,14 +131,11 @@ extension SearchViewController: UICollectionViewDataSource {
 }
 
 extension SearchViewController: SearchFilterDelegate {
-    
     func filter(text: String) {
-        let networkService = NetworkService()
         networkService.getDrinksByName(string: text) { result in
             switch result {
             case .success(let value):
                 self.drinks = value
-                print(value.count)
                 DispatchQueue.main.async {
                     self.collectionList.reloadData()
                 }

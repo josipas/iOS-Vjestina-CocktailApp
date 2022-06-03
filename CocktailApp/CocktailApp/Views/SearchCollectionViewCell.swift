@@ -16,8 +16,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildViews()
-        styleViews()
-        addConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -30,21 +28,31 @@ class SearchCollectionViewCell: UICollectionViewCell {
         drinkImage.image = nil
     }
 
-    func buildViews() {
+    private func buildViews() {
+        createViews()
+        addSubviews()
+        styleViews()
+        addConstraints()
+    }
+
+    private func createViews() {
         drinkImage = UIImageView()
-        contentView.addSubview(drinkImage)
-            
+
         drinkName = UILabel()
-        contentView.addSubview(drinkName)
-        
+
         drinkCategory = UILabel()
-        contentView.addSubview(drinkCategory)
-        
+
         alcoholic = UILabel()
+    }
+
+    private func addSubviews() {
+        contentView.addSubview(drinkImage)
+        contentView.addSubview(drinkName)
+        contentView.addSubview(drinkCategory)
         contentView.addSubview(alcoholic)
     }
         
-    private func styleViews(){
+    private func styleViews() {
         layer.masksToBounds = false
         layer.shadowRadius = 5
         layer.shadowOpacity = 0.7
@@ -53,10 +61,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
 
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
-//        let randomColor = randomColor(hue: .random, luminosity: .light)
-//        let darkPinkColors = randomColors(count: 10, hue: .red, luminosity: .light)
-//        contentView.layer.backgroundColor = darkPinkColors[0].cgColor
-//        contentView.layer.backgroundColor = randomColor.cgColor
         contentView.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
 
         drinkImage.contentMode = .scaleAspectFill
@@ -93,7 +97,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
         
     func set(strDrink: String, strCategory: String?, strAlcoholic: String?, strDrinkThumb: String) {
-        print("\(strDrink)")
         self.drinkName.text = "\(strDrink)"
         if let strCategory = strCategory {
             drinkCategory.text = "Category: \(strCategory)"
@@ -114,7 +117,3 @@ class SearchCollectionViewCell: UICollectionViewCell {
         drinkImage.load(urlString: strDrinkThumb)
     }
 }
-
-
-
-
