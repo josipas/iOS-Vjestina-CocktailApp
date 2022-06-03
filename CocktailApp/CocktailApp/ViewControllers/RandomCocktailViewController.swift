@@ -41,6 +41,7 @@ class RandomCocktailViewController: UIViewController {
         createViews()
         styleViews()
         defineLayoutForViews()
+        setUpNavBar()
     }
     
     private func createViews() {
@@ -152,6 +153,14 @@ class RandomCocktailViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(70)
         }
         
+    }
+    private func setUpNavBar() {
+        let navigationBarImageView = UILabel()
+        navigationBarImageView.textColor = .white
+        navigationBarImageView.text = "Cocktail App"
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
+
+        self.navigationItem.titleView = navigationBarImageView
     }
     
     private func reloadData() {

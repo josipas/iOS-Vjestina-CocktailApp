@@ -75,6 +75,7 @@ class CocktailDetailsViewController: UIViewController {
         createViews()
         styleViews()
         defineLayoutForViews()
+        setUpNavBar()
     }
     
     private func createViews() {
@@ -240,22 +241,34 @@ class CocktailDetailsViewController: UIViewController {
         instructions.text = drink.strInstructions
         
         var textIngredient = ""
-        if let i1 =  drink.strIngredient1 {
+        if
+            let i1 =  drink.strIngredient1,
+            i1 != "" {
             textIngredient += " - " + i1 + "\n"
         }
-        if let i2 =  drink.strIngredient2 {
+        if
+            let i2 =  drink.strIngredient2,
+            i2 != "" {
             textIngredient += " - " + i2 + "\n"
         }
-        if let i3 =  drink.strIngredient3 {
+        if
+            let i3 =  drink.strIngredient3,
+            i3 != "" {
             textIngredient += " - " + i3 + "\n"
         }
-        if let i4 =  drink.strIngredient4 {
+        if
+            let i4 =  drink.strIngredient4,
+            i4 != "" {
             textIngredient += " - " + i4 + "\n"
         }
-        if let i5 =  drink.strIngredient5 {
+        if
+            let i5 =  drink.strIngredient5,
+            i5 != "" {
             textIngredient += " - " + i5 + "\n"
         }
-        if let i6 =  drink.strIngredient6 {
+        if
+            let i6 =  drink.strIngredient6,
+            i6 != "" {
             textIngredient += " - " + i6 + "\n"
         }
         ingredients.text = textIngredient
@@ -263,6 +276,15 @@ class CocktailDetailsViewController: UIViewController {
         category.text = drink.strCategory
         
         alcoholic.text = drink.strAlcoholic
+    }
+    
+    private func setUpNavBar() {
+        let navigationBarImageView = UILabel()
+        navigationBarImageView.textColor = .white
+        navigationBarImageView.text = "Cocktail App"
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
+
+        self.navigationItem.titleView = navigationBarImageView
     }
     
     @objc func updateFavorites() {

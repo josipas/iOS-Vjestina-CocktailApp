@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         buildViews()
+        setUpNavBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +58,15 @@ class FavoritesViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             $0.leading.trailing.bottom.equalToSuperview().inset(16)
         }
+    }
+    
+    private func setUpNavBar() {
+        let navigationBarImageView = UILabel()
+        navigationBarImageView.textColor = .white
+        navigationBarImageView.text = "Cocktail App Favorites"
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
+
+        self.navigationItem.titleView = navigationBarImageView
     }
 }
 

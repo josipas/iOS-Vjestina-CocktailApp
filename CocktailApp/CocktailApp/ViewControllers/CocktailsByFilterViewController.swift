@@ -70,6 +70,7 @@ class CocktailsByFilterViewController: UIViewController {
         addSubviews()
         styleViews()
         addConstraints()
+        setUpNavBar()
     }
 
     private func createViews() {
@@ -100,6 +101,15 @@ class CocktailsByFilterViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.top.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
+    }
+    
+    private func setUpNavBar() {
+        let navigationBarImageView = UILabel()
+        navigationBarImageView.textColor = .white
+        navigationBarImageView.text = "Cocktail App"
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
+
+        self.navigationItem.titleView = navigationBarImageView
     }
 }
 

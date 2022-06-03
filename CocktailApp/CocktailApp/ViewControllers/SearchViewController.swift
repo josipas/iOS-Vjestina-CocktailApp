@@ -39,6 +39,7 @@ class SearchViewController: UIViewController {
         styleViews()
         defineLayoutForViews()
         configureCollectionView()
+        setUpNavBar()
     }
     
     private func createViews(){
@@ -61,13 +62,13 @@ class SearchViewController: UIViewController {
     private func defineLayoutForViews(){
         searchBar.snp.makeConstraints {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             $0.height.equalTo(45)
         }
         
         collectionList.snp.makeConstraints{
             $0.leading.trailing.equalToSuperview().inset(10)
-            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.top.equalTo(searchBar.snp.bottom).offset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -76,6 +77,15 @@ class SearchViewController: UIViewController {
         collectionList.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.reuseIdentifier)
         collectionList.dataSource = self
         collectionList.delegate = self
+    }
+    
+    private func setUpNavBar() {
+        let navigationBarImageView = UILabel()
+        navigationBarImageView.textColor = .white
+        navigationBarImageView.text = "Cocktail App"
+        navigationBarImageView.font = UIFont.italicSystemFont(ofSize: 20)
+
+        self.navigationItem.titleView = navigationBarImageView
     }
 }
 

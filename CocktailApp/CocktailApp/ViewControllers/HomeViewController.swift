@@ -3,6 +3,7 @@ import UIKit
 class HomeViewController: UIViewController {
     private var router: AppRouterProtocol!
     private var tableView: UITableView!
+    private var image: UIImageView!
 
     private var filters: [Filters] = Filters.allCases
     private var ingredients: [Ingredient] = []
@@ -68,20 +69,36 @@ class HomeViewController: UIViewController {
 
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
         tableView.separatorStyle = .none
+        
+        image = UIImageView()
     }
 
     private func addSubviews() {
         view.addSubview(tableView)
+        view.addSubview(image)
     }
 
     private func styleViews() {
         overrideUserInterfaceStyle = .light
         view.backgroundColor = .white
+        
+        let cheers = UIImage(named: "dance.jpeg")
+
+        image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = 20
+        image.clipsToBounds = true
+        image.image = cheers
     }
 
     private func addConstraints() {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        image.snp.makeConstraints{
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(0)
+            $0.height.equalTo(view.safeAreaLayoutGuide.layoutFrame.height / 4)
         }
     }
 
