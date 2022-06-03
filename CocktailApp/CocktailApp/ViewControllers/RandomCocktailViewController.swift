@@ -28,11 +28,9 @@ class RandomCocktailViewController: UIViewController {
             case .success(let value):
                 self.drink = value
                 DispatchQueue.main.async {
-                    print("Dohvatila sam podatke")
                     self.reloadData()
                 }
             case .failure(let error):
-                print("ERROR")
                 print(error)
             }
         }
@@ -76,23 +74,20 @@ class RandomCocktailViewController: UIViewController {
             case .success(let value):
                 self.drink = value
                 DispatchQueue.main.async {
-                    print("Dohvatila sam podatke")
                     self.reloadData()
                 }
             case .failure(let error):
-                print("ERROR")
                 print(error)
             }
         }
     }
     
     @objc func getDetails(sender: UIButton!) {
-        print("DETALJI")
         router.showRandomDetailsViewController(idDrink: drink.idDrink)
     }
     
     private func styleViews() {
-        name.font = .systemFont(ofSize: 30, weight: .bold)
+        name.font = .systemFont(ofSize: 24, weight: .bold)
         name.textAlignment = .center
         name.numberOfLines = 0
 
@@ -104,13 +99,13 @@ class RandomCocktailViewController: UIViewController {
 
         let again = UIImage(systemName: "repeat.circle.fill", withConfiguration: config)
         tryAgainButton.setImage(again, for: .normal)
-        tryAgainButton.tintColor = .black
+        tryAgainButton.tintColor = UIColor(hex: "#b88dbe")
         
         tryAgainLabel.text = "Try again"
         
         let details = UIImage(systemName: "questionmark.circle.fill", withConfiguration: config)
         detailButton.setImage(details, for: .normal)
-        detailButton.tintColor = .black
+        detailButton.tintColor = UIColor(hex: "#b88dbe")
         
         detailsLabel.text = "Show details"
                 
@@ -119,8 +114,8 @@ class RandomCocktailViewController: UIViewController {
     private func defineLayoutForViews() {
     
         name.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(5)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(5)
             $0.top.equalTo(image.snp.bottom).offset(10)
         }
           

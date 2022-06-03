@@ -114,7 +114,7 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let idDrink = drinks[indexPath.row].idDrink
-        router.showDetailsViewController(idDrink: idDrink)
+        router.showDetailsViewControllerFromSearch(idDrink: idDrink)
     }
 }
 

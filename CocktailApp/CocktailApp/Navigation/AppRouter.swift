@@ -6,6 +6,7 @@ class AppRouter: AppRouterProtocol {
     private var randomNC: UINavigationController!
     private var searchNC: UINavigationController!
     private var homeNC: UINavigationController!
+    private var favoritesNC: UINavigationController!
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -13,7 +14,7 @@ class AppRouter: AppRouterProtocol {
     }
     
     func setStartScreen(in window: UIWindow?) {
-        navBarAppearance.backgroundColor = UIColor(hex: "#f54242")
+        navBarAppearance.backgroundColor = UIColor(hex: "#b88dbe")
 
         let tabBarController = setUpTabBar()
 
@@ -26,7 +27,7 @@ class AppRouter: AppRouterProtocol {
 
     private func setUpTabBar() -> UITabBarController {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = UIColor(hex: "#f54242")
+        tabBarController.tabBar.tintColor = UIColor(hex: "#b88dbe")
         tabBarController.tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
         tabBarController.tabBar.layer.shadowRadius = 4.0
         tabBarController.tabBar.layer.shadowColor = UIColor.lightGray.cgColor
@@ -69,7 +70,7 @@ class AppRouter: AppRouterProtocol {
     
     private func createFavoritesViewController() -> UINavigationController {
         let favoritesVC = FavoritesViewController(router: self)
-        let favoritesNC = UINavigationController(rootViewController: favoritesVC)
+        favoritesNC = UINavigationController(rootViewController: favoritesVC)
         favoritesNC.tabBarItem = UITabBarItem.init(title: "Favorites", image: UIImage(systemName: "heart.fill"), tag: 3)
         favoritesNC.navigationBar.scrollEdgeAppearance = navBarAppearance
         favoritesNC.navigationBar.standardAppearance = navBarAppearance
@@ -82,7 +83,7 @@ class AppRouter: AppRouterProtocol {
         randomNC.pushViewController(vc, animated: true)
     }
     
-    func showDetailsViewController(idDrink: String) {
+    func showDetailsViewControllerFromSearch(idDrink: String) {
         let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
         searchNC.pushViewController(vc, animated: true)
     }
@@ -95,5 +96,10 @@ class AppRouter: AppRouterProtocol {
     func showDetailsViewControllerFromHome(idDrink: String) {
         let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
         homeNC.pushViewController(vc, animated: true)
+    }
+    
+    func showDetailsViewControllerFromFavorites(idDrink: String) {
+        let vc = CocktailDetailsViewController(router: self, idDrink: idDrink)
+        favoritesNC.pushViewController(vc, animated: true)
     }
 }

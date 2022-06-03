@@ -81,6 +81,10 @@ extension FavoritesViewController: UICollectionViewDataSource {
 
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let idDrink = favorites[indexPath.row].idDrink
+        router.showDetailsViewControllerFromFavorites(idDrink: idDrink)
+    }
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {

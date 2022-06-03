@@ -18,6 +18,9 @@ class CocktailDetailsViewController: UIViewController {
     private var heartFill: UIImage!
     private var favorites: UIImageView!
     private var idDrink: String!
+    private var scrollView: UIScrollView!
+    private var contentView: UIView!
+    private var scrollViewContainer: UIStackView!
 
     private var allFavorites: [DrinkFilter] = []
     
@@ -75,34 +78,47 @@ class CocktailDetailsViewController: UIViewController {
     }
     
     private func createViews() {
+        scrollView = UIScrollView()
+        scrollView.canCancelContentTouches = true
+        scrollView.delaysContentTouches = true
+        view.addSubview(scrollView)
+        
+        contentView = UIView()
+        scrollView.addSubview(contentView)
+        
+        scrollViewContainer = UIStackView()
+        scrollViewContainer.axis = .vertical
+        scrollViewContainer.backgroundColor = .purple
+
+        contentView.addSubview(scrollViewContainer)
+        
         name = UILabel()
-        
-        view.addSubview(name)
-        
+        scrollViewContainer.addSubview(name)
+
         instructions = UILabel()
-        view.addSubview(instructions)
-        
+        scrollViewContainer.addSubview(instructions)
+
         instructionsTitle = UILabel()
-        view.addSubview(instructionsTitle)
-        
+        scrollViewContainer.addSubview(instructionsTitle)
+
         image = UIImageView()
-        view.addSubview(image)
-        
+        scrollViewContainer.addSubview(image)
+
         ingredients = UILabel()
-        view.addSubview(ingredients)
-        
+        scrollViewContainer.addSubview(ingredients)
+
         ingredientsTitle = UILabel()
-        view.addSubview(ingredientsTitle)
-        
+        scrollViewContainer.addSubview(ingredientsTitle)
+
         category = UILabel()
-        view.addSubview(category)
-        
+        scrollViewContainer.addSubview(category)
+
         categoryText = UILabel()
-        view.addSubview(categoryText)
-        
+        scrollViewContainer.addSubview(categoryText)
+
         alcoholic = UILabel()
-        view.addSubview(alcoholic)
-        
+        scrollViewContainer.addSubview(alcoholic)
+
         heart = UIImage(systemName: "heart")
         heartFill = UIImage(systemName: "heart.fill")
         
@@ -110,8 +126,7 @@ class CocktailDetailsViewController: UIViewController {
         favorites.image = heart
         favorites.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.updateFavorites)))
         favorites.isUserInteractionEnabled = true
-        view.addSubview(favorites)
-
+        scrollView.addSubview(favorites)
     }
 
     
@@ -143,19 +158,40 @@ class CocktailDetailsViewController: UIViewController {
     
     private func defineLayoutForViews() {
         
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalTo(scrollView.snp.width)
+        }
+        
+        scrollViewContainer.snp.makeConstraints {
+            $0.leading.equalTo(scrollView.snp.leading)
+            $0.top.equalTo(scrollView.snp.top)
+            $0.trailing.equalTo(scrollView.snp.trailing)
+        }
+        
+        image.snp.makeConstraints{
+            $0.top.equalTo(scrollViewContainer.snp.top).inset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(300)
+        }
+        
         name.snp.makeConstraints {
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(95)
+            $0.leading.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(95)
             $0.top.equalTo(image.snp.bottom).offset(10)
         }
         alcoholic.snp.makeConstraints{
             $0.top.equalTo(name.snp.bottom).offset(0)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(95)
+            $0.leading.equalToSuperview().inset(30)
+            $0.trailing.equalToSuperview().inset(95)
         }
           
         favorites.snp.makeConstraints {
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
+            $0.trailing.equalToSuperview().inset(40)
             $0.leading.equalTo(name.snp.trailing).offset(10)
             $0.top.equalTo(image.snp.bottom).offset(20)
             $0.height.equalTo(40)
@@ -189,14 +225,8 @@ class CocktailDetailsViewController: UIViewController {
         ingredients.snp.makeConstraints{
             $0.top.equalTo(ingredientsTitle.snp.bottom).offset(5)
             $0.trailing.leading.equalToSuperview().inset(20)
+            $0.bottom.equalTo(scrollView.snp.bottom)
         }
-        
-        image.snp.makeConstraints{
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(300)
-        }
-        
     }
     
     private func reloadData() {
@@ -234,6 +264,7 @@ class CocktailDetailsViewController: UIViewController {
     
     @objc func updateFavorites() {
         let drinkFilter = DrinkFilter(strDrink: drink.strDrink, strDrinkThumb: drink.strDrinkThumb, idDrink: drink.idDrink)
+        print("TU SMO")
         if favorites.image == heart {
             PersistenceManager.updateWith(favorite: drinkFilter, actionType: .add) { [weak self] error in
                 guard let self = self else { return }
