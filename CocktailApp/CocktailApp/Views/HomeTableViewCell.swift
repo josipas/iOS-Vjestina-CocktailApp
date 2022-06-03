@@ -62,10 +62,10 @@ class HomeTableViewCell: UITableViewCell {
     }
 
     private func styleViews() {
-        firstLabel.textColor = UIColor(hex: "#f54242")
+        firstLabel.textColor = .black.withAlphaComponent(0.8)
         firstLabel.font = UIFont.italicSystemFont(ofSize: 20)
 
-        secondLabel.textColor = UIColor(hex: "#f54242")
+        secondLabel.textColor = .black.withAlphaComponent(0.8)
         secondLabel.font = UIFont.italicSystemFont(ofSize: 20)
     }
 
@@ -83,7 +83,8 @@ class HomeTableViewCell: UITableViewCell {
 
         collectionView.snp.makeConstraints {
             $0.top.equalTo(secondLabel.snp.bottom).offset(16)
-            $0.leading.trailing.bottom.equalToSuperview().inset(16)
+            $0.leading.bottom.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview()
             $0.height.equalTo(80)
         }
     }

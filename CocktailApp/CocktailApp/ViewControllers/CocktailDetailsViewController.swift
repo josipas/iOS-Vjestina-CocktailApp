@@ -88,7 +88,6 @@ class CocktailDetailsViewController: UIViewController {
         
         scrollViewContainer = UIStackView()
         scrollViewContainer.axis = .vertical
-        scrollViewContainer.backgroundColor = .purple
 
         contentView.addSubview(scrollViewContainer)
         
@@ -131,6 +130,10 @@ class CocktailDetailsViewController: UIViewController {
 
     
     private func styleViews() {
+        overrideUserInterfaceStyle = .light
+
+        self.navigationController?.navigationBar.tintColor = .white
+        
         name.font = .systemFont(ofSize: 30, weight: .bold)
         name.numberOfLines = 0
 
@@ -150,7 +153,7 @@ class CocktailDetailsViewController: UIViewController {
         ingredientsTitle.font = .systemFont(ofSize: 22, weight: .bold)
         ingredientsTitle.text = "Ingredients:"
 
-        favorites.tintColor = .red
+        favorites.tintColor = UIColor(hex: "#b88dbe")
         
         categoryText.font = .systemFont(ofSize: 22, weight: .bold)
         categoryText.text = "Category:"

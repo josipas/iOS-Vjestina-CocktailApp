@@ -54,6 +54,7 @@ class SearchViewController: UIViewController {
     }
     
     private func styleViews(){
+        overrideUserInterfaceStyle = .light
         layout.minimumInteritemSpacing = 10
     }
     

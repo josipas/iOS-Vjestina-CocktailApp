@@ -90,7 +90,9 @@ class CocktailsByFilterViewController: UIViewController {
     }
 
     private func styleViews() {
+        self.navigationController?.navigationBar.tintColor = .white
 
+        overrideUserInterfaceStyle = .light
     }
 
     private func addConstraints() {

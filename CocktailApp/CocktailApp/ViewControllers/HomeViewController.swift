@@ -75,6 +75,7 @@ class HomeViewController: UIViewController {
     }
 
     private func styleViews() {
+        overrideUserInterfaceStyle = .light
         view.backgroundColor = .white
     }
 
@@ -134,7 +135,7 @@ extension HomeViewController: UITableViewDataSource {
 
             cell.selectionStyle = .none
             cell.delegate = self
-            cell.set(firstText: "Pick drink for yourself", secondText: "by group", filter: .category)
+            cell.set(firstText: "Pick category", secondText: "🍺🍸🍹☕️", filter: .category)
 
             return cell
         }

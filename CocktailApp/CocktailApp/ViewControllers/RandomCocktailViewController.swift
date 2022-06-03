@@ -87,6 +87,8 @@ class RandomCocktailViewController: UIViewController {
     }
     
     private func styleViews() {
+        overrideUserInterfaceStyle = .light
+
         name.font = .systemFont(ofSize: 24, weight: .bold)
         name.textAlignment = .center
         name.numberOfLines = 0
@@ -112,14 +114,12 @@ class RandomCocktailViewController: UIViewController {
     }
     
     private func defineLayoutForViews() {
-    
         name.snp.makeConstraints {
             $0.leading.equalTo(view.safeAreaLayoutGuide).inset(5)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(5)
             $0.top.equalTo(image.snp.bottom).offset(10)
         }
-          
-       
+
         image.snp.makeConstraints{
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(40)
             $0.leading.trailing.equalToSuperview().inset(50)

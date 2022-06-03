@@ -49,6 +49,8 @@ class FavoritesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.reuseIdentifier)
 
+        overrideUserInterfaceStyle = .light
+
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints {
@@ -94,9 +96,12 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let collectionWidth = collectionView.frame.width
-        let itemDimension = (collectionWidth - 2*16) / 3
+        let itemWidth = (collectionWidth - 2*16) / 3
 
-        return CGSize(width: itemDimension, height: 130)
+        let collectionHeight = collectionView.frame.height
+        let itemHeight = collectionHeight / 5
+
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }
 

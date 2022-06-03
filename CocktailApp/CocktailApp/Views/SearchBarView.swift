@@ -66,15 +66,15 @@ class SearchBarView: UIView {
         
         let imageMagnifyingGlass = UIImage(systemName: "magnifyingglass")
         searchImage.image = imageMagnifyingGlass
-        searchImage.tintColor = .black
+        searchImage.tintColor = .black.withAlphaComponent(0.8)
 
         let xmark = UIImage(systemName: "xmark")
         xButton.setImage(xmark, for: .normal)
-        xButton.tintColor = .black
+        xButton.tintColor = .black.withAlphaComponent(0.8)
         xButton.isHidden = true
         
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.setTitleColor(.black.withAlphaComponent(0.8), for: .normal)
         cancelButton.isHidden = true
         
     }

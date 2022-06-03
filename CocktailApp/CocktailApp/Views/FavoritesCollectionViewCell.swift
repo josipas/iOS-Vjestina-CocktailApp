@@ -45,7 +45,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     }
 
     private func styleViews() {
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
     }

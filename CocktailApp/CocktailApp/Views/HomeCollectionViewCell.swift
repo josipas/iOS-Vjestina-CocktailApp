@@ -10,7 +10,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
-        colors = randomColors(count: 10, hue: .red, luminosity: .bright)
+        colors = randomColors(count: 10, hue: .purple, luminosity: .bright)
 
         buildViews()
     }
@@ -46,11 +46,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     private func styleViews() {
         descriptionLabel.font = .systemFont(ofSize: 16)
-        descriptionLabel.textColor = colors[0]
+        descriptionLabel.textColor = .black
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 0
 
-        self.backgroundColor = colors[0].withAlphaComponent(0.05)
+        self.backgroundColor = colors[0].withAlphaComponent(0.2)
     }
 
     private func addContraints() {
