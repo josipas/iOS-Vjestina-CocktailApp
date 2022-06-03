@@ -90,7 +90,8 @@ class HomeViewController: UIViewController {
 
     private func addConstraints() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.trailing.leading.equalToSuperview()
+            $0.bottom.equalTo(image.snp.top).offset(-16)
         }
         
         image.snp.makeConstraints{
